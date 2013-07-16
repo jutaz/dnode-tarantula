@@ -1,0 +1,33 @@
+{
+  "author": {
+    "name": "Leonid Levkin",
+    "email": "llevkin@yandex.ru",
+    "url": ""
+  },
+  "name": "dnode-spider",
+  "description": "TCP spider for dnode.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "index.js",
+  "engines": {
+    "node": "~0.10.0"
+  },
+  "dependencies": {
+    "dnode-protocol": "~0.2.2"
+  },
+  "homepage": "",
+  "readme": "",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": ""
+  },
+  "_id": "dnode-spider@0.0.0",
+  "dist": {
+    "shasum": ""
+  },
+  "_from": "dnode-spider@",
+  "_resolved": ""
+}
