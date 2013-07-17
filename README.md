@@ -79,10 +79,14 @@ If you don't like dnode.Spider classname, you can use dnode.Server.
 dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
-* Object options - settings object
-```
-{
-	port: 'server port, 5000 by default',
-	host: 'server hostname, localhost by default'
-}
-```
+* Object options - settings object {port: 5000(default), host: 'localhost'(default)}
+
+After creation in api object add '$' object with 2 methods: 'proxy' and 'ids'. This methods availible in all Fly-s remote.
+
+### api.$.proxy(String nodeId, String methodname, [arguments...])
+
+Call method with 'methodname' from Fly with id = 'nodeId'.
+
+### api.$.ids(Function callback)
+
+Return Array of all Id connected to Spider 
