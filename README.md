@@ -101,6 +101,22 @@ Broad cast call 'methodname' on all Fly and pass to each arguments
 
 Return ids of all connected clients
 
+### Events
+
+#### server.on('connection', function(remote, client) {});
+#### server.on('disconnection', function(client) {});
+
 ## Client Methods
 
+### var client = dnode.Fly(Object api, Object options = {});
 
+Create new Fly-Client, shard api object functions to Spider-Server.
+If you don't like dnode.Fly classname, you can use dnode.Client.
+dnode.Client === dnode.Fly
+
+* Object api - shared Fly object
+* Object options - settings object {port: 5000(default), host: 'localhost'(default), nodeId: 'any uniq_id or name'(default process.pid)}
+
+### Events
+
+#### server.on('connection', function(remote) {});
