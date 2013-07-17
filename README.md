@@ -20,7 +20,7 @@ server:
 
 ``` js
 var dnode = require('dnode-spider');
-var server = dnode.Spider({
+var server = new dnode.Spider({
     s: function (a, b, cb) {
         cb(a + b);
     }
@@ -32,7 +32,7 @@ client:
 
 ``` js
 var dnode = require('dnode-spider');
-var server = dnode.Fly({
+var server = new dnode.Fly({
     c: function (a, b, cb) {
         cb((a + b) * 2);
     }
