@@ -66,13 +66,13 @@ node client.js &
 6 'Hello from Fly! My name: Fly1'
 ```
 
-# Methods
+## Methods
 
 ``` js
 var dnode = require('dnode-spider')
 ```
 
-## var server = dnode.Spider(Object api, Object options = {});
+### var server = dnode.Spider(Object api, Object options = {});
 
 Create new Spider-Server, shard api object functions to all connected Fly-s.
 If you don't like dnode.Spider classname, you can use dnode.Server.
