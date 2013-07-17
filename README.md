@@ -1,6 +1,10 @@
 # dnode-spider
 
-dnode-spider is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets. Fly-Clients nodes and Spider-Server in the middle of web.
+dnode-spider is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets.
+Fly-Clients nodes and Spider-Server in the middle of web.
+
+Fly === Client.
+Spider === Server.
 
 ![dnode-spider: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)
 
@@ -104,8 +108,8 @@ Return ids of all connected clients
 ### Events
 
 ``` js
-server.on('connection', function(remote, client) {});
-server.on('disconnection', function(client) {});
+server.on('connection', function(remote, client) {});	// Then client connected to server and ready
+server.on('disconnection', function(client) {});		// Then client disconnected
 ```
 
 ## Client Methods
@@ -122,5 +126,5 @@ dnode.Client === dnode.Fly
 ### Events
 
 ``` js
-server.on('connection', function(remote) {});
+server.on('connection', function(remote) {}); // Then client connected to server and ready
 ```
