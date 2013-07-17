@@ -108,8 +108,8 @@ Return ids of all connected clients
 ### Events
 
 ``` js
-server.on('connection', function(remote, client) {});	// Then client connected
-server.on('disconnection', function(client) {});		// Then client disconnected
+server.on('connection', function(remote, client) {});	// client connected
+server.on('disconnection', function(client) {});		// client disconnected
 ```
 
 ## Client Methods
@@ -126,5 +126,5 @@ dnode.Client === dnode.Fly
 ### Events
 
 ``` js
-server.on('connection', function(remote) {}); // Then client connected
+server.on('connection', function(remote) {}); // client connected
 ```
