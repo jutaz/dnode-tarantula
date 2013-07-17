@@ -72,6 +72,8 @@ node client.js &
 var dnode = require('dnode-spider')
 ```
 
+## Server Methods
+
 ### var server = dnode.Spider(Object api, Object options = {});
 
 Create new Spider-Server, shard api object functions to all connected Fly-s.
@@ -89,4 +91,16 @@ Call method with 'methodname' from Fly with id = 'nodeId'.
 
 ### api.$.ids(Function callback)
 
-Return Array of all Id connected to Spider 
+Return Array of all Id connected to Spider
+
+### server.broadcast(String methodname, [arguments...])
+
+Broad cast call 'methodname' on all Fly and pass to each arguments
+
+### server.ids()
+
+Return ids of all connected clients
+
+## Client Methods
+
+
