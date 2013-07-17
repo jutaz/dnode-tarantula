@@ -16,7 +16,7 @@ npm i dnode-spider
 
 ### Examples
 
-server:
+#### server:
 
 ``` js
 var dnode = require('dnode-spider');
@@ -42,7 +42,7 @@ output:
 6 'Hello from Fly! My name: Fly1'
 ```
 
-client:
+#### client:
 
 ``` js
 var dnode = require('dnode-spider');
