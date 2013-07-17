@@ -8,3 +8,10 @@ dnode-spider is an asynchronous rpc system for node.js based on dnode-protocol a
 * Automatic Reconnect
 * bi-direction and poly-direction communication provided by Spider-Server 'proxy' method. You can call any Fly-Clients functions from any Fly-Clients.
 
+### Install
+
+```
+npm i dnode-spider
+```
+
+### Examples
