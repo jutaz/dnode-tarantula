@@ -12,7 +12,7 @@
   ],
   "name": "dnode-spider",
   "description": "asynchronous rpc system for node.js, bi-direction and poly-direction communication...",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/llevkin/dnode-spider"
@@ -30,10 +30,10 @@
   "bugs": {
     "url": "https://github.com/llevkin/dnode-spider/issues"
   },
-  "_id": "dnode-spider@0.7.2",
+  "_id": "dnode-spider@0.7.3",
   "dist": {
     "shasum": "ea75f9b8337ae9308204e384149dd0f4994109c4"
   },
-  "_from": "dnode-spider@0.7.2",
-  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.7.2.tgz"
+  "_from": "dnode-spider@0.7.3",
+  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.7.3.tgz"
 }
