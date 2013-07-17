@@ -20,12 +20,15 @@ server:
 
 ``` js
 var dnode = require('dnode-spider');
+
+/** create Spider-Server */
 var server = new dnode.Spider({
     s: function (a, b, cb) {
         cb(a + b, 'Hello from Spider!');
     }
 }, {port: 5000, host: 'localhost'});
 
+/** on connection call client function "c" */
 server.on('connection', function(remote) {
 	remote.c(1, 2, function(res, hello) {
 		console.log(res, hello);
@@ -38,12 +41,15 @@ client:
 
 ``` js
 var dnode = require('dnode-spider');
+
+/** create Fly-Client */
 var client = new dnode.Fly({
     c: function (a, b, cb) {
         cb((a + b) * 2, 'Hello from Fly! My name: '+client.nodeId);
     }
 }, {port: 5000, host: 'localhost', nodeId: 'Fly1'});
 
+/** on connection call client function "s" */
 client.on('connection', function(remote) {
 	remote.s(1, 2, function(res, hello) {
 		console.log(res, hello);
