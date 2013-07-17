@@ -9,7 +9,7 @@ Spider === Server.
 ![dnode-spider: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)
 
 ### Features
-* Automatic Reconnect
+* Automatic reconnection
 * bi-direction and poly-direction communication provided by Spider-Server 'proxy' method. You can call any Fly-Clients functions from any Fly-Clients.
 
 ### Install
