@@ -79,6 +79,8 @@ If you don't like dnode.Spider classname, you can use dnode.Server.
 dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
-* Object options - settings object:
-	** port - server port, 5000 by default
-	** host - server hostname, localhost by default
+* Object options - settings object
+```
+port - server port, 5000 by default
+host - server hostname, localhost by default
+```
