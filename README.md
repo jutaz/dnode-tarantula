@@ -36,6 +36,6 @@ var server = dnode.Fly({
     c: function (a, b, cb) {
         cb((a + b) * 2);
     }
-}, {port: 5000, host: 'localhost'});
+}, {port: 5000, host: 'localhost', nodeId: 'Fly1'});
 
 ```
