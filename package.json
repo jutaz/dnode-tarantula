@@ -12,7 +12,7 @@
   ],
   "name": "dnode-spider",
   "description": "Comming soon...",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/llevkin/dnode-spider"
@@ -26,15 +26,14 @@
     "node-uuid": "~1.4.0"
   },
   "homepage": "https://github.com/llevkin/dnode-spider",
-  "readme": "Comming soon...",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/llevkin/dnode-spider/issues"
   },
-  "_id": "dnode-spider@0.5.2",
+  "_id": "dnode-spider@0.7.0",
   "dist": {
     "shasum": "ea75f9b8337ae9308204e384149dd0f4994109c4"
   },
-  "_from": "dnode-spider@0.5.2",
-  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.5.01.tgz"
+  "_from": "dnode-spider@0.7.0",
+  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.7.0.tgz"
 }
