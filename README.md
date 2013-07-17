@@ -37,6 +37,11 @@ server.on('connection', function(remote) {
 
 ```
 
+output:
+```
+6 'Hello from Fly! My name: Fly1'
+```
+
 client:
 
 ``` js
@@ -56,4 +61,9 @@ client.on('connection', function(remote) {
 	});
 });
 
+```
+
+output:
+```
+3 'Hello from Spider!'
 ```
