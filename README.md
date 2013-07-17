@@ -15,3 +15,27 @@ npm i dnode-spider
 ```
 
 ### Examples
+
+server:
+
+``` js
+var dnode = require('dnode-spider');
+var server = dnode.Spider({
+    s: function (a, b, cb) {
+        cb(a + b);
+    }
+}, {port: 5000, host: 'localhost'});
+
+```
+
+client:
+
+``` js
+var dnode = require('dnode-spider');
+var server = dnode.Fly({
+    c: function (a, b, cb) {
+        cb((a + b) * 2);
+    }
+}, {port: 5000, host: 'localhost'});
+
+```
