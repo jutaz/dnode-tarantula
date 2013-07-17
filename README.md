@@ -16,7 +16,7 @@ npm i dnode-spider
 
 ### Examples
 
-#### server:
+server.js:
 
 ``` js
 var dnode = require('dnode-spider');
@@ -37,12 +37,7 @@ server.on('connection', function(remote) {
 
 ```
 
-output:
-```
-6 'Hello from Fly! My name: Fly1'
-```
-
-#### client:
+client.js:
 
 ``` js
 var dnode = require('dnode-spider');
@@ -65,5 +60,8 @@ client.on('connection', function(remote) {
 
 output:
 ```
+node server.js &
+node client.js &
 3 'Hello from Spider!'
+6 'Hello from Fly! My name: Fly1'
 ```
