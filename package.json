@@ -12,7 +12,7 @@
   ],
   "name": "dnode-spider",
   "description": "asynchronous rpc system for node.js, bi-direction and poly-direction communication...",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/llevkin/dnode-spider"
@@ -23,18 +23,18 @@
   },
   "dependencies": {
     "dnode-protocol": "~0.2.2",
-    "node-uuid": "~1.4.0"
+    "winston": "~0.7.2"
   },
   "homepage": "https://github.com/llevkin/dnode-spider",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/llevkin/dnode-spider/issues"
   },
-  "_id": "dnode-spider@0.8.2",
+  "_id": "dnode-spider@0.9.0",
   "dist": {
     "shasum": "8ab9d9165e42107fdcf933af3849c8e468801341"
   },
   "_from": "dnode-spider@",
-  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.8.2.tgz",
+  "_resolved": "https://registry.npmjs.org/dnode-spider/-/dnode-spider-0.9.0.tgz",
   "readme": "# dnode-spider\n\ndnode-spider is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets.\nFly-Clients nodes and Spider-Server in the middle of web.\n\nFly === Client.\nSpider === Server.\n\n![dnode-spider: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)\n\n### Features\n* Automatic reconnection\n* bi-direction and poly-direction communication provided by Spider-Server 'proxy' method. You can call any Fly-Clients functions from any Fly-Clients.\n\n### Install\n\n```\nnpm i dnode-spider\n```\n\n### Examples\n\nserver.js:\n\n``` js\nvar dnode = require('dnode-spider');\n\n/** create Spider-Server */\nvar server = new dnode.Spider({\n    s: function (a, b, cb) {\n        cb(a + b, 'Hello from Spider!');\n    }\n}, {port: 5000, host: 'localhost'});\n\n/** on connection call client function \"c\" */\nserver.on('connection', function(remote) {\n\tremote.c(1, 2, function(res, hello) {\n\t\tconsole.log(res, hello);\n\t});\n});\n\n```\n\nclient.js:\n\n``` js\nvar dnode = require('dnode-spider');\n\n/** create Fly-Client */\nvar client = new dnode.Fly({\n    c: function (a, b, cb) {\n        cb((a + b) * 2, 'Hello from Fly! My name: '+client.nodeId);\n    }\n}, {port: 5000, host: 'localhost', nodeId: 'Fly1'});\n\n/** on connection call client function \"s\" */\nclient.on('connection', function(remote) {\n\tremote.s(1, 2, function(res, hello) {\n\t\tconsole.log(res, hello);\n\t});\n});\n\n```\n\noutput:\n```\nnode server.js &\nnode client.js &\n3 'Hello from Spider!'\n6 'Hello from Fly! My name: Fly1'\n```\n\n## Methods\n\n``` js\nvar dnode = require('dnode-spider')\n```\n\n## Server Methods\n\n### var server = dnode.Spider(Object api, Object options = {});\n\nCreate new Spider-Server, shard api object functions to all connected Fly-s.\nIf you don't like dnode.Spider classname, you can use dnode.Server.\ndnode.Server === dnode.Spider\n\n* Object api - shared Spider object\n* Object options - settings object {port: 5000(default), host: 'localhost'(default)}\n\nAfter creation in api object add '$' object with 2 methods: 'proxy' and 'ids'. This methods availible in all Fly-s remote.\n\n### api.$.proxy(String nodeId, String methodname, [arguments...])\n\nCall method with 'methodname' from Fly with id = 'nodeId'.\n\n### api.$.ids(Function callback)\n\nReturn Array of all Id connected to Spider\n\n### server.broadcast(String methodname, [arguments...])\n\nBroad cast call 'methodname' on all Fly and pass to each arguments\n\n### server.ids()\n\nReturn ids of all connected clients\n\n### Events\n\n``` js\nserver.on('connection', function(remote, client) {});\t// client connected\nserver.on('disconnection', function(client) {});\t\t// client disconnected\n```\n\n## Client Methods\n\n### var client = dnode.Fly(Object api, Object options = {});\n\nCreate new Fly-Client, shard api object functions to Spider-Server.\nIf you don't like dnode.Fly classname, you can use dnode.Client.\ndnode.Client === dnode.Fly\n\n* Object api - shared Fly object\n* Object options - settings object {port: 5000(default), host: 'localhost'(default), nodeId: 'any uniq_id or name'(default process.pid)}\n\n### Events\n\n``` js\nserver.on('connection', function(remote) {}); // client connected\n```\n"
 }

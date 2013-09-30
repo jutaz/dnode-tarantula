@@ -1,1 +1,1 @@
-module.exports = require('./lib/dnode-spider');
+module.exports = require('./lib/index');
