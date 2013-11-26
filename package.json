@@ -2,7 +2,7 @@
   "author": {
     "name": "Justas",
     "email": "brazauskasjustas@gmail.com",
-    "url": "https://github.com/jutaz/dnode-taranrula"
+    "url": "https://github.com/jutaz/dnode-tarantula"
   },
   "keywords": [
     "ipc",
@@ -10,7 +10,7 @@
     "dnode",
     "dnode-protocol"
   ],
-  "name": "dnode-taranrula",
+  "name": "dnode-tarantula",
   "description": "asynchronous rpc system for node.js, bi-direction and poly-direction communication...",
   "version": "1.0.0",
   "repository": {
