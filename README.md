@@ -1,21 +1,16 @@
 # dnode-tarantula
 
 dnode-tarantula is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets.
-Fly-Clients nodes and Spider-Server in the middle of web.
-
-Fly === Client.
-Spider === Server.
-
-![dnode-tarantula: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)
+This is fork of [dnode-spider](https://github.com/llevkin/dnode-spider)
 
 ### Features
 * Automatic reconnection
-* bi-direction and poly-direction communication provided by Spider-Server 'proxy' method. You can call any Fly-Clients functions from any Fly-Clients.
+* bi-direction and poly-direction communication
 
 ### Install
 
 ```
-npm i dnode-tarantula
+npm install dnode-tarantula
 ```
 
 ### Examples
