@@ -1,12 +1,12 @@
-# dnode-spider
+# dnode-tarantula
 
-dnode-spider is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets.
+dnode-tarantula is an asynchronous rpc system for node.js based on dnode-protocol and TCP sockets.
 Fly-Clients nodes and Spider-Server in the middle of web.
 
 Fly === Client.
 Spider === Server.
 
-![dnode-spider: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)
+![dnode-tarantula: spider rpc](http://s17.postimg.org/5gwmy1a4v/dnode_spider.jpg)
 
 ### Features
 * Automatic reconnection
@@ -15,7 +15,7 @@ Spider === Server.
 ### Install
 
 ```
-npm i dnode-spider
+npm i dnode-tarantula
 ```
 
 ### Examples
@@ -23,7 +23,7 @@ npm i dnode-spider
 server.js:
 
 ``` js
-var dnode = require('dnode-spider');
+var dnode = require('dnode-tarantula');
 
 /** create Spider-Server */
 var server = new dnode.Spider({
@@ -44,7 +44,7 @@ server.on('connection', function(remote) {
 client.js:
 
 ``` js
-var dnode = require('dnode-spider');
+var dnode = require('dnode-tarantula');
 
 /** create Fly-Client */
 var client = new dnode.Fly({
@@ -73,7 +73,7 @@ node client.js &
 ## Methods
 
 ``` js
-var dnode = require('dnode-spider')
+var dnode = require('dnode-tarantula')
 ```
 
 ## Server Methods
