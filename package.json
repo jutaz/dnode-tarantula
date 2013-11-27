@@ -19,8 +19,7 @@
   },
   "main": "index.js",
   "dependencies": {
-    "dnode-protocol": "~0.2.2",
-    "winston": "~0.7.2"
+    "dnode-protocol": "~0.2.2"
   },
   "homepage": "https://github.com/jutaz/dnode-tarantula",
   "readmeFilename": "README.md",
