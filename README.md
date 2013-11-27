@@ -80,7 +80,8 @@ If you don't like dnode.Spider classname, you can use dnode.Server.
 dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
-* Object options - settings object 
+* Object options - settings object
+
 ```
 {
 	port: 5000(default),
@@ -123,7 +124,8 @@ If you don't like dnode.Fly classname, you can use dnode.Client.
 dnode.Client === dnode.Fly
 
 * Object api - shared Fly object
-* Object options - settings object 
+* Object options - settings object
+ 
 ```
 {
 	port: 5000(default),
