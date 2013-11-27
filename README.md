@@ -22,9 +22,9 @@ var dnode = require('dnode-tarantula');
 
 /** create Spider-Server */
 var server = new dnode.Spider({
-    s: function (a, b, cb) {
-        cb(a + b, 'Hello from Spider!');
-    }
+	s: function (a, b, cb) {
+		cb(a + b, 'Hello from Spider!');
+	}
 }, {port: 5000, host: 'localhost'});
 
 /** on connection call client function "c" */
@@ -43,9 +43,9 @@ var dnode = require('dnode-tarantula');
 
 /** create Fly-Client */
 var client = new dnode.Fly({
-    c: function (a, b, cb) {
-        cb((a + b) * 2, 'Hello from Fly! My name: '+client.nodeId);
-    }
+	c: function (a, b, cb) {
+		cb((a + b) * 2, 'Hello from Fly! My name: '+client.nodeId);
+	}
 }, {port: 5000, host: 'localhost', nodeId: 'Fly1'});
 
 /** on connection call client function "s" */
@@ -80,7 +80,14 @@ If you don't like dnode.Spider classname, you can use dnode.Server.
 dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
-* Object options - settings object `{port: 5000(default), host: 'localhost'(default), auth: function(flyAuth, callback)}`
+* Object options - settings object 
+``` js
+{
+	port: 5000(default),
+	host: 'localhost'(default),
+	auth: function(flyAuth, callback)
+}
+```
 
 After creation in api object add '$' object with 2 methods: 'proxy' and 'ids'. This methods availible in all Fly-s remote.
 
@@ -116,7 +123,15 @@ If you don't like dnode.Fly classname, you can use dnode.Client.
 dnode.Client === dnode.Fly
 
 * Object api - shared Fly object
-* Object options - settings object `{port: 5000(default), host: 'localhost'(default), nodeId: 'any uniq_id or name'(default process.pid), auth: function(callback)}`
+* Object options - settings object 
+``` js
+{
+	port: 5000(default),
+	host: 'localhost'(default),
+	nodeId: 'any uniq_id or name'(default process.pid),
+	auth: function(callback)
+}
+```
 
 ### Events
 
