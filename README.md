@@ -80,7 +80,7 @@ If you don't like dnode.Spider classname, you can use dnode.Server.
 dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
-* Object options - settings object {port: 5000(default), host: 'localhost'(default)}
+* Object options - settings object `{port: 5000(default), host: 'localhost'(default), auth: function(flyAuth, callback)}`
 
 After creation in api object add '$' object with 2 methods: 'proxy' and 'ids'. This methods availible in all Fly-s remote.
 
@@ -116,7 +116,7 @@ If you don't like dnode.Fly classname, you can use dnode.Client.
 dnode.Client === dnode.Fly
 
 * Object api - shared Fly object
-* Object options - settings object {port: 5000(default), host: 'localhost'(default), nodeId: 'any uniq_id or name'(default process.pid)}
+* Object options - settings object `{port: 5000(default), host: 'localhost'(default), nodeId: 'any uniq_id or name'(default process.pid), auth: function(callback)}`
 
 ### Events
 
