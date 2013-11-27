@@ -82,11 +82,11 @@ dnode.Server === dnode.Spider
 * Object api - shared Spider object
 * Object options - settings object
 
-```
+```json
 {
-	port: 1337, //default 5000
-	host: 'node.example.com', // default 'localhost'
-	auth: function(flyAuth, callback) //default null
+	"port": 1337, //default 5000
+	"host": "node.example.com", // default 'localhost'
+	"auth": function(flyAuth, callback) //default null
 }
 ```
 
@@ -126,12 +126,12 @@ dnode.Client === dnode.Fly
 * Object api - shared Fly object
 * Object options - settings object
 
-```
+```json
 {
-	port: 1337, //default 5000
-	host: 'node.example.com', // default 'localhost'
-	nodeId: 'W00T', //default process.pid
-	auth: function(callback) //default null
+	"port": 1337, //default 5000
+	"host": "node.example.com", // default 'localhost'
+	"nodeId": "W00T", //default process.pid
+	"auth": function(callback)//default null
 }
 ```
 
