@@ -81,7 +81,7 @@ dnode.Server === dnode.Spider
 
 * Object api - shared Spider object
 * Object options - settings object 
-``` js
+```
 {
 	port: 5000(default),
 	host: 'localhost'(default),
@@ -124,7 +124,7 @@ dnode.Client === dnode.Fly
 
 * Object api - shared Fly object
 * Object options - settings object 
-``` js
+```
 {
 	port: 5000(default),
 	host: 'localhost'(default),
