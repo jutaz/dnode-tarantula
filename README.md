@@ -73,11 +73,7 @@ var dnode = require('dnode-tarantula')
 
 ## Server Methods
 
-### var server = dnode.Spider(Object api, Object options = {});
-
-Create new Spider-Server, shard api object functions to all connected Fly-s.
-If you don't like dnode.Spider classname, you can use dnode.Server.
-dnode.Server === dnode.Spider
+### var server = dnode.Server(Object api, Object options = {});
 
 * Object api - shared Spider object
 * Object options - settings object
@@ -117,11 +113,7 @@ server.on('disconnection', function(client) {});		// client disconnected
 
 ## Client Methods
 
-### var client = dnode.Fly(Object api, Object options = {});
-
-Create new Fly-Client, shard api object functions to Spider-Server.
-If you don't like dnode.Fly classname, you can use dnode.Client.
-dnode.Client === dnode.Fly
+### var client = dnode.Client(Object api, Object options = {});
 
 * Object api - shared Fly object
 * Object options - settings object
