@@ -14,4 +14,8 @@ memory.prototype.delete = function(id, callack) {
 
 }
 
+memory.prototype.ids = function(callback) {
+
+}
+
 module.exports = memory;
