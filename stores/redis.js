@@ -2,6 +2,7 @@ function store(opts) {
     this.pub    = opts.pub;
     this.sub    = opts.sub;
     this.client = opts.client;
+    this.clients = {};
 }
 
 store.prototype.publish = function(data, callback) {
