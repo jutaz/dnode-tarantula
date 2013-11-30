@@ -8,7 +8,12 @@ memory.prototype.set = function(client, callback) {
 }
 
 memory.prototype.get = function(id, callback) {
-
+	client = this.clients[id];
+	if(!client) {
+		callback(null, false);
+	} else {
+		callback(null, client);
+	}
 }
 
 memory.prototype.delete = function(id, callack) {
