@@ -1,5 +1,7 @@
-function store() {
-
+function store(opts) {
+    this.pub    = opts.pub;
+    this.sub    = opts.sub;
+    this.client = opts.client;
 }
 
 store.prototype.publish = function(data, callback) {
