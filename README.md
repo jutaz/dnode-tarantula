@@ -20,16 +20,14 @@ server.js:
 ``` js
 var dnode = require('dnode-tarantula');
 
-/** create Spider-Server */
-var server = new dnode.Spider({
-	s: function (a, b, cb) {
+var server = new dnode.Server({
+	transform: function (a, b, cb) {
 		cb(a + b, 'Hello from Spider!');
 	}
 }, {port: 5000, host: 'localhost'});
 
-/** on connection call client function "c" */
 server.on('connection', function(remote) {
-	remote.c(1, 2, function(res, hello) {
+	remote.math(1, 2, function(res, hello) {
 		console.log(res, hello);
 	});
 });
@@ -41,16 +39,14 @@ client.js:
 ``` js
 var dnode = require('dnode-tarantula');
 
-/** create Fly-Client */
-var client = new dnode.Fly({
-	c: function (a, b, cb) {
+var client = new dnode.Client({
+	math: function (a, b, cb) {
 		cb((a + b) * 2, 'Hello from Fly! My name: '+client.nodeId);
 	}
 }, {port: 5000, host: 'localhost', nodeId: 'Fly1'});
 
-/** on connection call client function "s" */
 client.on('connection', function(remote) {
-	remote.s(1, 2, function(res, hello) {
+	remote.transform(1, 2, function(res, hello) {
 		console.log(res, hello);
 	});
 });
@@ -86,19 +82,19 @@ var dnode = require('dnode-tarantula')
 }
 ```
 
-After creation in api object add '$' object with 2 methods: 'proxy' and 'ids'. This methods availible in all Fly-s remote.
+Api has `$` object, which is reserved for internal stuff.
 
 ### api.$.proxy(String nodeId, String methodname, [arguments...])
 
-Call method with 'methodname' from Fly with id = 'nodeId'.
+Call method with 'methodname' from Client with id = 'nodeId'.
 
 ### api.$.ids(Function callback)
 
-Return Array of all Id connected to Spider
+Return Array of all Client ID`s connected to Server
 
 ### server.broadcast(String methodname, [arguments...])
 
-Broad cast call 'methodname' on all Fly and pass to each arguments
+Broadcast call 'methodname' on all Clients and pass to each arguments
 
 ### server.ids()
 
@@ -107,7 +103,7 @@ Return ids of all connected clients
 ### Events
 
 ``` js
-server.on('connection', function(remote, client) {});	// client connected
+server.on('connection', function(remote, client, api) {});	// client connected
 server.on('disconnection', function(client) {});		// client disconnected
 ```
 
@@ -115,7 +111,7 @@ server.on('disconnection', function(client) {});		// client disconnected
 
 ### var client = dnode.Client(Object api, Object options = {});
 
-* Object api - shared Fly object
+* Object api - shared Client object
 * Object options - settings object
 
 ```js
