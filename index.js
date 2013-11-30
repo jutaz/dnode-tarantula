@@ -1,6 +1,7 @@
 var server      = require('./lib/Server');
 var client      = require('./lib/Client');
 var memoryStore = require('./stores/memory');
+var redisStore  = require('./stores/redis');
 
 module.exports = {
     Server:     server,
@@ -11,6 +12,7 @@ module.exports = {
     client:     client,
     Fly:        client,
     stores:     {
-        memory: memoryStore
+        memory: memoryStore,
+        redis: redisStore
     },
 };
