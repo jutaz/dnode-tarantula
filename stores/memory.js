@@ -16,8 +16,10 @@ memory.prototype.get = function(id, callback) {
 	}
 }
 
-memory.prototype.delete = function(id, callack) {
-
+memory.prototype.delete = function(id, callback) {
+	this.clients[id] = null;
+	delete this.clients[id];
+	(callback && callback(null))
 }
 
 memory.prototype.ids = function(callback) {
