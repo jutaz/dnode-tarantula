@@ -2,6 +2,22 @@ function memory() {
     this.clients = {};
 }
 
+memory.prototype.publish = function() {
+
+}
+
+memory.prototype.subscribe = function() {
+
+}
+
+memory.prototype.unsubscribe = function() {
+
+}
+
+memory.prototype.destroy = function() {
+    
+}
+
 memory.prototype.set = function(client, callback) {
     this.clients[client.id] = client;
     (callback && callback(null, client))
