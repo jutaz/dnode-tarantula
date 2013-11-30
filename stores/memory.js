@@ -18,4 +18,8 @@ memory.prototype.ids = function(callback) {
 
 }
 
+memory.prototype.changeId = function(id, newId, callback) {
+
+}
+
 module.exports = memory;
