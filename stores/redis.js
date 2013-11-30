@@ -22,7 +22,10 @@ store.prototype.destroy = function(callback) {
 }
 
 store.prototype.set = function(client, callback) {
-
+    this.clients[client.id] = client;
+    this.client.set(client.id, true, function() {
+        (callback && callback(null, client))
+    });
 }
 
 store.prototype.get = function(id, callback) {
