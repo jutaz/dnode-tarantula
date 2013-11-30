@@ -14,8 +14,9 @@ memory.prototype.unsubscribe = function() {
 
 }
 
-memory.prototype.destroy = function() {
-    
+memory.prototype.destroy = function(callback) {
+    this.clients = {};
+    (callback && callback())
 }
 
 memory.prototype.set = function(client, callback) {
