@@ -3,7 +3,8 @@ function memory() {
 }
 
 memory.prototype.set = function(client, callback) {
-
+	this.clients[client.id] = client;
+	(callback && callback(null, client))
 }
 
 memory.prototype.get = function(id, callback) {
