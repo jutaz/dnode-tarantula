@@ -37,7 +37,10 @@ store.prototype.unsubscribe = function(name, callback) {
 }
 
 store.prototype.destroy = function(callback) {
-
+    this.pub.end();
+    this.sub.end();
+    this.client.end();
+    this.clients = {};
 }
 
 store.prototype.set = function(client, callback) {
