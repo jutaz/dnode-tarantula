@@ -18,8 +18,14 @@ function store(opts) {
     this.clients      = {};
 }
 
-store.prototype.publish = function(data, callback) {
-
+store.prototype.publish = function(name, data, callback) {
+    if('string' == typeof data) {
+        data = JSON.decode(data);
+    }
+    data.server_id = this.server_id;
+    data = JSON.encode(data);
+    this.pub.publish(name, data)
+    callback();
 }
 
 store.prototype.subscribe = function(name, callaback) {
