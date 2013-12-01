@@ -1,6 +1,10 @@
+var store = require('../lib/store');
+
 function memory() {
     this.clients = {};
 }
+
+memory.prototype.__proto__ = store.prototype;
 
 memory.prototype.publish = function() {
 

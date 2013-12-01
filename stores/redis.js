@@ -1,3 +1,5 @@
+var Store = require('../lib/store');
+
 var pub     = null;
 var sub     = null;
 var client  = null;
@@ -17,6 +19,8 @@ function store(opts) {
     this.client       = client;
     this.clients      = {};
 }
+
+store.prototype.__proto__ = Store.prototype;
 
 store.prototype.publish = function(name, data, callback) {
     if('string' == typeof data) {
