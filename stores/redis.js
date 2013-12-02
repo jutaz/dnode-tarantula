@@ -1,4 +1,5 @@
-var Store = require('../lib/store');
+var Store   = require('../lib/store');
+var packer  = require('../lib/packer');
 
 var pub     = null;
 var sub     = null;
@@ -18,25 +19,34 @@ function store(opts) {
     this.sub          = sub;
     this.client       = client;
     this.clients      = {};
+    this.packer       = new packer(this.id);
 }
 
 store.prototype.__proto__ = Store.prototype;
 
 store.prototype.publish = function(name, data, callback) {
-    if('string' == typeof data) {
-        data = JSON.decode(data);
-    }
-    data = {
-        payload: data,
-    }
-    data.server_id = this.server_id;
-    data = JSON.encode(data);
-    this.pub.publish(name, data)
-    callback();
+    var self = this;
+    this.packer.pack(data, function(err, packed) {
+        if(err) {
+            throw new Error(err);
+        }
+        self.pub.publish(name, packed)
+        (callback && callback());
+    });
 }
 
 store.prototype.subscribe = function(name, callaback) {
-
+    var self = this;
+    this.sub.subscribe(name);
+    self.sub.on('message', function (channel, message) {
+        if (name == channel) {
+            self.packer.unpack(message, function(err, data, isLocal) {
+                if(err) {
+                    throw new Error(err);
+                }
+            });
+        }
+    });
 }
 
 store.prototype.unsubscribe = function(name, callback) {
