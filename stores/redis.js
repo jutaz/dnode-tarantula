@@ -40,9 +40,12 @@ store.prototype.subscribe = function(name, callaback) {
     this.sub.subscribe(name);
     self.sub.on('message', function (channel, message) {
         if (name == channel) {
-            self.packer.unpack(message, function(err, data, isLocal) {
+            self.packer.unpack(message, function(err, payload, isLocal, data) {
                 if(err) {
                     throw new Error(err);
+                }
+                if(!isLocal) {
+                    self.emit('request', payload, data.server_id);
                 }
             });
         }
