@@ -81,8 +81,9 @@ function wrapper(opts) {
 
     store.prototype.ids = function(callback) {
         this.client.keys('*', function (err, keys) {
-          if (err) {
-            throw new Error(err);
+            if (err) {
+                throw new Error(err);
+            }
             callback(null, keys);
         });
     }
