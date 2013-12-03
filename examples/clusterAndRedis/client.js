@@ -1,17 +1,26 @@
 var dnode = require('../../index');
+var cluster = require('cluster');
 
+var clients = [];
 var connectOptions = {
     port: 3000,
     host: 'localhost'
 }
 
-var client = new dnode.client({
-    fn: function(data, callback) {
-        console.log(data);
-        callback(data);
+if(cluster.isMaster) {
+    for(var i = 0; i < 10; i++) {
+        cluster.fork();
     }
-}, connectOptions);
+} else {
+    var client = new dnode.client({
+        fn: function(data, callback) {
+            console.log(data);
+            callback(data);
+        }
+    }, connectOptions);
 
-client.on('connection', function(remote) {
+    client.on('connection', function(remote) {
 
-});
+    });
+    clients.push(client);
+}
