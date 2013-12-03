@@ -1,7 +1,6 @@
 var dnode = require('../../index');
 var cluster = require('cluster');
 
-var clients = [];
 var connectOptions = {
     port: 3000,
     host: 'localhost'
@@ -20,7 +19,6 @@ if(cluster.isMaster) {
     }, connectOptions);
 
     client.on('connection', function(remote) {
-
+        
     });
-    clients.push(client);
 }
