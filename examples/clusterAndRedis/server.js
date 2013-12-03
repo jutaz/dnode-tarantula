@@ -14,7 +14,7 @@ if(cluster.isMaster) {
             pub: redis.createClient(),
             sub: redis.createClient(),
             client: redis.createClient()
-        })
+        });
     }
 
     var server = new dnode.Server({}, serverOptions);
