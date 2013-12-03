@@ -1,4 +1,4 @@
-var dnode = require('../index');
+var dnode = require('../../index');
 
 var serverOptions = {
     port: 3000,
