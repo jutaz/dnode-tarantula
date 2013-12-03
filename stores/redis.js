@@ -23,7 +23,7 @@ function wrapper(opts) {
                 throw new Error(err);
             }
             self.pub.publish(name, packed)
-            (callback && callback());
+            callback && callback();
         });
     }
 
@@ -46,7 +46,7 @@ function wrapper(opts) {
 
     store.prototype.unsubscribe = function(name, callback) {
         this.sub.unsubscribe(name);
-        (callback && callback(null, client))
+        callback && callback(null, client)
     }
 
     store.prototype.destroy = function(callback) {
@@ -59,7 +59,7 @@ function wrapper(opts) {
     store.prototype.set = function(client, callback) {
         this.clients[client.id] = client;
         this.client.set(client.id, true, function() {
-            (callback && callback(null, client))
+            callback && callback(null, client)
         });
     }
 
@@ -76,7 +76,7 @@ function wrapper(opts) {
         this.client.del(id);
         this.clients[id] = null;
         delete this.clients[id];
-        (callback && callback(null))
+        callback && callback(null)
     }
 
     store.prototype.ids = function(callback) {
