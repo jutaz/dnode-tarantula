@@ -47,16 +47,4 @@ memory.prototype.ids = function(callback) {
     callback(null, Object.keys(this.clients))
 }
 
-memory.prototype.changeId = function(id, newId, callback) {
-    var self = this;
-    this.get(id, function(err, client) {
-        client.id = newId;
-        self.set(client, function(err, client) {
-            self.delete(id, function(err) {
-                callback(err);
-            });
-        })
-    });
-}
-
 module.exports = memory;
