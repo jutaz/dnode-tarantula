@@ -1,5 +1,4 @@
 var dnode = require('../index');
-var generator = require("./lib/code_generator");
 
 var connectOptions = {
     port: 3000,
@@ -14,5 +13,5 @@ var client = new dnode.Fly({
 }, connectOptions);
 
 client.on('connection', function(remote) {
-    
+
 });

@@ -8,5 +8,9 @@ var serverOptions = {
 var server = new dnode.Server({}, serverOptions);
 
 server.on('connection', function(remote, client, api) {
-    
+    setInterval(function() {
+        remote.fn("test", function(data) {
+            console.log(data);
+        });
+    }, 1000);
 });
