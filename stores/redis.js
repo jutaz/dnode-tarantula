@@ -80,7 +80,10 @@ store.prototype.get = function(id, callback) {
 }
 
 store.prototype.delete = function(id, callback) {
-
+    this.client.del(id);
+    this.clients[id] = null;
+    delete this.clients[id];
+    (callback && callback(null))
 }
 
 store.prototype.ids = function(callback) {
