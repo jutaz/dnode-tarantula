@@ -53,7 +53,8 @@ store.prototype.subscribe = function(name, callaback) {
 }
 
 store.prototype.unsubscribe = function(name, callback) {
-
+    this.sub.unsubscribe(name);
+    (callback && callback(null, client))
 }
 
 store.prototype.destroy = function(callback) {
