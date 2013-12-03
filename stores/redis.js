@@ -45,7 +45,7 @@ store.prototype.subscribe = function(name, callaback) {
                     throw new Error(err);
                 }
                 if(!isLocal) {
-                    self.emit('request', payload, data.server_id);
+                    self.emit('request', payload, data.server_id, data);
                 }
             });
         }
