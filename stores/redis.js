@@ -5,7 +5,7 @@ function wrapper(opts) {
     pub    = opts.pub;
     sub    = opts.sub;
     client = opts.client;
-    return function store(opts) {
+    function store(opts) {
         this.server_id    = opts.id;
         this.pub          = pub;
         this.sub          = sub;
@@ -87,5 +87,6 @@ function wrapper(opts) {
             callback(null, keys);
         });
     }
+    return store;
 }
 module.exports = wrapper;
