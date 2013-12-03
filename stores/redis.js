@@ -88,7 +88,11 @@ store.prototype.delete = function(id, callback) {
 }
 
 store.prototype.ids = function(callback) {
-
+    this.client.keys('*', function (err, keys) {
+      if (err) {
+        throw new Error(err);
+        callback(null, keys);
+    });
 }
 
 module.exports = wrapper;
