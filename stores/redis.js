@@ -11,7 +11,7 @@ function wrapper(opts) {
         this.sub          = sub;
         this.client       = client;
         this.clients      = {};
-        this.packer       = new packer(this.id);
+        this.packer       = new packer(this.server_id);
     }
 
     store.prototype.__proto__ = Store.prototype;
