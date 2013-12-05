@@ -18,6 +18,8 @@ npm install dnode-tarantula
 
 ### Examples
 
+Also check [examples](/examples/)
+
 server.js:
 
 ``` js
