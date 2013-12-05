@@ -3,6 +3,8 @@
 dnode-tarantula is an asynchronous rpc and event system for node.js based on dnode-protocol and TCP sockets.
 This is fork of [dnode-spider](https://github.com/llevkin/dnode-spider)
 
+[![NPM](https://nodei.co/npm/dnode-tarantula.png?downloads=true)](https://nodei.co/npm/dnode-tarantula/)
+
 ### Features
 * Automatic reconnection
 * bi-direction and poly-direction communication
