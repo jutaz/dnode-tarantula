@@ -72,11 +72,13 @@ node client.js &
 var dnode = require('dnode-tarantula')
 ```
 
-## Server Methods
+# API
 
-### var server = dnode.Server(Object api, Object options = {});
+## Server
 
-* Object api - shared Spider object
+### var server = dnode.Server(api, options);
+
+* Object api - shared server methods object
 * Object options - settings object
 
 ```js
@@ -87,19 +89,28 @@ var dnode = require('dnode-tarantula')
 }
 ```
 
-Api has `$` object, which is reserved for internal stuff.
+Api has `$` object, which is reserved for internal stuff (Danger Zone™).
 
-### api.$.proxy(String nodeId, String methodname, [arguments...])
+### api.$.proxy(nodeId, methodname, [arguments])
+
+* String nodeId - receiver client Id
+* String methodname - name of method
+* Array arguments - arguments, that should be passed to remote function
 
 Call method with 'methodname' from Client with id = 'nodeId'.
 
-### api.$.ids(Function callback)
+### api.$.ids(callback)
 
-Return Array of all Client ID`s connected to Server
+* Function callback - callback
 
-### server.broadcast(String methodname, [arguments...])
+Return Array of all Client ID`s that are connected to Server
 
-Broadcast call 'methodname' on all Clients and pass to each arguments
+### server.broadcast(methodname, [arguments])
+
+* String methodname - name of method
+* Array arguments - arguments, that should be passed to remote function
+
+Broadcast a function call to all clients.
 
 ### server.ids()
 
@@ -112,11 +123,11 @@ server.on('connection', function(remote, client, api) {});	// client connected
 server.on('disconnection', function(client) {});		// client disconnected
 ```
 
-## Client Methods
+## Client
 
-### var client = dnode.Client(Object api, Object options = {});
+### var client = dnode.Client(api, options);
 
-* Object api - shared Client object
+* Object api - shared Client methods object
 * Object options - settings object
 
 ```js
@@ -128,8 +139,12 @@ server.on('disconnection', function(client) {});		// client disconnected
 }
 ```
 
+### client.update()
+
+Call this method after updating your API object, and changes will propagate to server.
+
 ### Events
 
 ``` js
-server.on('connection', function(remote) {}); // client connected
+client.on('connection', function(remote) {}); // client connected
 ```
