@@ -7,11 +7,14 @@ function wrapper(opts) {
     client = opts.client;
     function store(opts) {
         this.server_id    = opts.id;
+        this.pingInterval = opts.pingInterval*1.2;
+        this.timeouts     = {};
         this.pub          = pub;
         this.sub          = sub;
         this.client       = client;
         this.clients      = {};
         this.packer       = new packer(this.server_id);
+        this.sub.setMaxListeners(100);
     }
 
     store.prototype.__proto__ = Store.prototype;
@@ -27,21 +30,19 @@ function wrapper(opts) {
         });
     }
 
-    store.prototype.subscribe = function(name, callaback) {
+    store.prototype.subscribe = function(name, callback) {
         var self = this;
-        this.sub.subscribe(name);
-        self.sub.on('message', function (channel, message) {
+        this.sub.on('message', function (channel, message) {
             if (name == channel) {
                 self.packer.unpack(message, function(err, payload, isLocal, data) {
                     if(err) {
                         throw new Error(err);
                     }
-                    if(!isLocal) {
-                        self.emit('request', payload, data.server_id, data);
-                    }
+                    self.emit('request', payload, channel, data);
                 });
             }
         });
+        this.sub.subscribe(name);
     }
 
     store.prototype.unsubscribe = function(name, callback) {
@@ -57,16 +58,19 @@ function wrapper(opts) {
     }
 
     store.prototype.set = function(client, callback) {
+        var self = this;
         this.clients[client.id] = client;
         this.client.set(client.id, true, function() {
-            callback && callback(null, client)
+            self.ttl(client.id, function() {
+                callback && callback(null, client)
+            });
         });
     }
 
     store.prototype.get = function(id, callback) {
         client = this.clients[id];
         if(!client) {
-            callback(null, false);
+            callback(new Error("No client with Id: "+id), null);
         } else {
             callback(null, client);
         }
@@ -76,7 +80,7 @@ function wrapper(opts) {
         this.client.del(id);
         this.clients[id] = null;
         delete this.clients[id];
-        callback && callback(null)
+        callback && callback(null, id)
     }
 
     store.prototype.ids = function(callback) {
@@ -87,6 +91,19 @@ function wrapper(opts) {
             callback(null, keys);
         });
     }
+
+    store.prototype.ttl = function(id, callback) {
+        var self = this;
+        if(this.timeouts[id]) {
+            clearTimeout(this.timeouts[id]);
+        }
+        this.client.expire(id, this.pingInterval/1000);
+        this.timeouts[id] = setTimeout(function(id) {
+            self.delete(id)
+        }, this.pingInterval, id);
+        callback && callback();
+    }
+
     return store;
 }
 module.exports = wrapper;
