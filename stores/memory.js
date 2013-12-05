@@ -1,7 +1,10 @@
 var store = require('../lib/store');
 
-function memory() {
-    this.clients = {};
+function memory(opts) {
+    this.clients      = {};
+    this.server_id    = opts.id;
+    this.pingInterval = opts.pingInterval*1.2;
+    this.timeouts     = {};
 }
 
 memory.prototype.__proto__ = store.prototype;
@@ -25,7 +28,9 @@ memory.prototype.destroy = function(callback) {
 
 memory.prototype.set = function(client, callback) {
     this.clients[client.id] = client;
-    (callback && callback(null, client))
+    this.ttl(client.id, function() {
+        (callback && callback(null, client))
+    });
 }
 
 memory.prototype.get = function(id, callback) {
@@ -45,6 +50,17 @@ memory.prototype.delete = function(id, callback) {
 
 memory.prototype.ids = function(callback) {
     callback(null, Object.keys(this.clients))
+}
+
+store.prototype.ttl = function(id, callback) {
+    var self = this;
+    if(this.timeouts[id]) {
+        clearTimeout(this.timeouts[id]);
+    }
+    this.timeouts[id] = setTimeout(function(id) {
+        self.delete(id)
+    }, this.pingInterval, id);
+    callback && callback();
 }
 
 module.exports = memory;
