@@ -146,5 +146,7 @@ Call this method after updating your API object, and changes will propagate to s
 ### Events
 
 ``` js
-client.on('connection', function(remote) {}); // client connected
+client.on('remote', function(remote) {}); // client remote methods are ready
+client.on('ping', function() {}); // ping packet sent
+client.on('ping:timeout', function() {}); // well... A ping timeout!
 ```
