@@ -96,12 +96,6 @@ var server = dnode.Server(api, options);
 
 Api object has `$` object, which is reserved for internal stuff (Danger Zone™).
 
-### api.$.proxy(nodeId, methodname, [arguments])
-
-* String nodeId - receiver client Id
-* String methodname - name of method
-* Array arguments - arguments, that should be passed to remote function
-
 Call method with 'methodname' from Client with id = 'nodeId'.
 
 ### api.$.ids(callback)
