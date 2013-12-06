@@ -104,6 +104,10 @@ Call method with 'methodname' from Client with id = 'nodeId'.
 
 Return Array of all Client ID`s that are connected to Server
 
+### server.update(id)
+
+Update server API to client with id == id
+
 ### server.broadcast(methodname, [arguments])
 
 * String methodname - name of method
