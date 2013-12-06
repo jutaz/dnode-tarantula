@@ -94,7 +94,7 @@ var server = dnode.Server(api, options);
 }
 ```
 
-Api has `$` object, which is reserved for internal stuff (Danger Zone™).
+Api object has `$` object, which is reserved for internal stuff (Danger Zone™).
 
 ### api.$.proxy(nodeId, methodname, [arguments])
 
