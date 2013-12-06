@@ -76,16 +76,21 @@ var dnode = require('dnode-tarantula')
 
 ## Server
 
-### var server = dnode.Server(api, options);
+``` js
+var server = dnode.Server(api, options);
+```
 
 * Object api - shared server methods object
 * Object options - settings object
 
 ```js
 {
-	port: 1337, //default 5000
-	host: 'node.example.com', // default 'localhost'
-	auth: function(flyAuth, callback) //default null
+	port: 1337, //default: 5000
+	host: 'node.example.com', // default: 'localhost'
+	auth: function(flyAuth, callback), // default: null
+	id: '1337', // any string. Default: random shortid
+	store: new dnode.stores.redis({}), // default: memory store
+	pingInterval: 15000, // Any number in ms. default: 10000
 }
 ```
 
