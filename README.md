@@ -147,6 +147,7 @@ Call this method after updating your API object, and changes will propagate to s
 
 ``` js
 client.on('remote', function(remote) {}); // client remote methods are ready
-client.on('ping', function() {}); // ping packet sent
-client.on('ping:timeout', function() {}); // well... A ping timeout!
+client.on('ping', function(client) {}); // ping packet sent
+client.on('ping:timeout', function(client) {}); // well... A ping timeout!
+client.on('ping:reply', function(client) {}); // emitted when ping reply arrives
 ```
