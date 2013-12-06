@@ -124,17 +124,19 @@ server.on('disconnection', function(client) {});		// client disconnected
 
 ## Client
 
-### var client = dnode.Client(api, options);
+```js
+var client = dnode.Client(api, options);
+```
 
 * Object api - shared Client methods object
 * Object options - settings object
 
 ```js
 {
-	port: 1337, //default 5000
-	host: 'node.example.com', // default 'localhost'
-	nodeId: 'W00T', //default process.pid
-	auth: function(callback)//default null
+	port: 1337, //default: 5000
+	host: 'node.example.com', // default: 'localhost'
+	nodeId: 'W00T', //default: process.pid
+	auth: 'SoSecureKey' //auth key. default: null
 }
 ```
 
