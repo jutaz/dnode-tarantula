@@ -89,7 +89,11 @@ var server = dnode.Server(api, options);
 	host: 'node.example.com', // default: 'localhost'
 	auth: function(flyAuth, callback), // default: null
 	id: '1337', // any string. Default: random shortid
-	store: new dnode.stores.redis({}), // default: memory store
+	store: new dnode.stores.redis({
+		pub: redis.createServer(),
+		sub: redis.createServer(),
+		client: redis.createServer()
+	}), // default: memory store
 	pingInterval: 15000, // Any number in ms. default: 10000
 }
 ```
