@@ -4,11 +4,11 @@ var redis = require('redis');
 var serverOptions = {
     port: 3000,
     host: 'localhost',
-    store: new dnode.store.redis({
+    store: new dnode.stores.redis({
         pub: redis.createClient(),
         sub: redis.createClient(),
         client: redis.createClient()
-    });
+    })
 }
 
 var server = new dnode.Server({}, serverOptions);
