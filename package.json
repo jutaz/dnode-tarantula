@@ -12,7 +12,7 @@
   ],
   "name": "dnode-tarantula",
   "description": "asynchronous rpc system for node.js, bi-direction and poly-direction communication...",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/jutaz/dnode-tarantula"
