@@ -8,7 +8,9 @@
     "ipc",
     "tcp",
     "dnode",
-    "dnode-protocol"
+    "dnode-protocol",
+    "rpc",
+    "duplex"
   ],
   "name": "dnode-tarantula",
   "description": "asynchronous rpc system for node.js, bi-direction and poly-direction communication...",
