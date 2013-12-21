@@ -60,10 +60,8 @@ function wrapper(opts) {
     store.prototype.set = function(client, callback) {
         var self = this;
         this.clients[client.id] = client;
-        this.client.set(client.id, true, function() {
-            self.ttl(client.id, function() {
-                callback && callback(null, client)
-            });
+        this.client.setex(client.id, this.pingInterval/1000, true, function() {
+            callback && callback(null, client)
         });
     }
 
